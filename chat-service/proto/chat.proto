@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package chat;
+
+service ChatService {
+  // Bidirectional streaming: Real-time chat between multiple clients
+  rpc Chat(stream ChatMessage) returns (stream ChatMessage);
+}
+
+message ChatMessage {
+  string user_id = 1;
+  string username = 2;
+  string message = 3;
+  int64 timestamp = 4;
+  MessageType type = 5;
+}
+
+enum MessageType {
+  TEXT = 0;
+  JOIN = 1;
+  LEAVE = 2;
+  TYPING = 3;
+}

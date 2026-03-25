@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package user;
+
+service UserService {
+  rpc GetUser (GetUserRequest) returns (UserResponse);
+  rpc CreateUser (CreateUserRequest) returns (UserResponse);
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+  
+  // Server Streaming - monitor user activity in real-time
+  rpc WatchUserActivity (WatchActivityRequest) returns (stream UserActivityEvent);
+}
+
+message GetUserRequest {
+  string user_id = 1;
+}
+
+message CreateUserRequest {
+  string name = 1;
+  string email = 2;
+  string phone = 3;
+}
+
+message UserResponse {
+  string user_id = 1;
+  string name = 2;
+  string email = 3;
+  string phone = 4;
+  string created_at = 5;
+}
+
+message ListUsersRequest {
+  int32 limit = 1;
+}
+
+message ListUsersResponse {
+  repeated UserResponse users = 1;
+}
+
+message WatchActivityRequest {
+  string user_id = 1; // empty string = watch all users
+}
+
+message UserActivityEvent {
+  string event_id = 1;
+  string user_id = 2;
+  string user_name = 3;
+  string event_type = 4; // "user_created", "user_login", "profile_updated", "action_performed"
+  string description = 5;
+  string timestamp = 6;
+}

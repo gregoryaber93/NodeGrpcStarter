@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package stock;
+
+service StockTickerService {
+  // Bidirectional streaming: Subscribe to stock updates and manage watchlist
+  rpc StreamStockPrices(stream StockRequest) returns (stream StockUpdate);
+}
+
+message StockRequest {
+  RequestType type = 1;
+  string symbol = 2;
+}
+
+enum RequestType {
+  SUBSCRIBE = 0;
+  UNSUBSCRIBE = 1;
+  PING = 2;
+}
+
+message StockUpdate {
+  string symbol = 1;
+  double price = 2;
+  double change = 3;
+  double change_percent = 4;
+  int64 volume = 5;
+  int64 timestamp = 6;
+  UpdateType type = 7;
+}
+
+enum UpdateType {
+  PRICE = 0;
+  SUBSCRIBED = 1;
+  UNSUBSCRIBED = 2;
+  PONG = 3;
+}
