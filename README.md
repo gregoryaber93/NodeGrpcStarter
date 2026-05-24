@@ -61,7 +61,7 @@ Each service contains:
 Install dependencies per service:
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter
+cd NodeGrpcStarter
 for d in user-service order-service metrics-service file-upload-service chat-service stock-ticker-service; do
   (cd "$d" && npm install)
 done
@@ -74,42 +74,42 @@ Open separate terminals for each service you want to run.
 ### User Service
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/user-service
+cd user-service
 npm run dev
 ```
 
 ### Order Service
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/order-service
+cd order-service
 npm run dev
 ```
 
 ### Metrics Service
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/metrics-service
+cd metrics-service
 npm start
 ```
 
 ### File Upload Service
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/file-upload-service
+cd file-upload-service
 npm start
 ```
 
 ### Chat Service
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/chat-service
+cd chat-service
 npm start
 ```
 
 ### Stock Ticker Service
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/stock-ticker-service
+cd stock-ticker-service
 npm start
 ```
 
@@ -118,7 +118,7 @@ npm start
 ### User activity streaming demo
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/user-service
+cd user-service
 npx ts-node src/client-stream-test.ts
 ```
 
@@ -127,35 +127,35 @@ npx ts-node src/client-stream-test.ts
 (Requires user-service + order-service running)
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/order-service
+cd order-service
 npx ts-node src/client-test.ts
 ```
 
 ### Metrics client-streaming demo
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/metrics-service
+cd metrics-service
 npm run client
 ```
 
 ### File upload client-streaming demo
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/file-upload-service
+cd file-upload-service
 npm run client
 ```
 
 ### Chat bidirectional-streaming demo
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/chat-service
+cd chat-service
 npm run client
 ```
 
 ### Stock ticker bidirectional-streaming demo
 
 ```bash
-cd /home/runner/work/NodeGrpcStarter/NodeGrpcStarter/stock-ticker-service
+cd stock-ticker-service
 npm run client
 ```
 
