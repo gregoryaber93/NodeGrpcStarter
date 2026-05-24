@@ -58,13 +58,23 @@ Each service contains:
 
 ## Install Dependencies
 
-Install dependencies per service:
+Install dependencies per service from the repository root (`NodeGrpcStarter`):
 
+**Bash**
 ```bash
-cd NodeGrpcStarter
 for d in user-service order-service metrics-service file-upload-service chat-service stock-ticker-service; do
   (cd "$d" && npm install)
 done
+```
+
+**PowerShell**
+```powershell
+$userServices = @("user-service", "order-service", "metrics-service", "file-upload-service", "chat-service", "stock-ticker-service")
+foreach ($service in $userServices) {
+  Push-Location $service
+  npm install
+  Pop-Location
+}
 ```
 
 ## Run Services
