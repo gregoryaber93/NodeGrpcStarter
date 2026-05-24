@@ -69,8 +69,8 @@ done
 
 **PowerShell**
 ```powershell
-$userServices = @("user-service", "order-service", "metrics-service", "file-upload-service", "chat-service", "stock-ticker-service")
-foreach ($service in $userServices) {
+$services = @("user-service", "order-service", "metrics-service", "file-upload-service", "chat-service", "stock-ticker-service")
+foreach ($service in $services) {
   Push-Location $service
   npm install
   Pop-Location
